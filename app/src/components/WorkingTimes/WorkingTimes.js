@@ -20,13 +20,17 @@ export default {
         end : ''
       }
     }).then(function(response) {
-          console.log(JSON.stringify(response, null, 2));
+          //console.log(JSON.stringify(response, null, 2));
           self.dataBack = response.data.data;
     }).catch(function (error) {
-          console.log(JSON.stringify(error, null, 2));
+          //console.log(JSON.stringify(error, null, 2));
     });
   },
   methods: {
+    redirectWorkingTime: function(index){
+      this.$router.push('/working-time/' + this.dataBack[index].id)
+      console.log(this.dataBack[index])
 
+    }
   }
 }
