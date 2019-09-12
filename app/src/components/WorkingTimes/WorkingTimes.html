@@ -1,5 +1,19 @@
 
 <section class="working-times">
-  <h1>working-times Component</h1>
+
+  <div class="flex-container">
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+      <tr v-for="(data, index) in dataBack">
+        <td>{{data.id}}</td>
+        <td>{{moment(data.start).format('DD MMMM YYYY, h:mm:ss a')}}</td>
+        <td>{{moment(data.end).format('DD MMMM YYYY, h:mm:ss a')}}</td>
+      </tr>
+    </table>
+  </div>
 </section>
 

@@ -5,6 +5,8 @@ import router from './router'
 
 Vue.prototype.moment = moment
 Vue.config.productionTip = false
+Vue.prototype.moment = moment
+Vue.use(router)
 
 new Vue({
   router,
