@@ -11,8 +11,6 @@ Vue.config.productionTip = false
 Vue.prototype.moment = moment
 Vue.use(VueRouter)
 
-Vue.component('User', { template: 'User/ {{ this.$router.params.id }}' })
-
 new Vue({
   router,
   render: h => h(App),

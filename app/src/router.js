@@ -26,14 +26,14 @@ export default new Router({
             component: ChartManager
         },
         {
+            path: '/user',
+            name: 'home',
+            component: User
+        },
+        {
             path: '*',
             name: 'home',
             component: HelloWorld
-        },
-        {
-            path: '/components/User/index',
-            name: 'User',
-            component: User
         },
     ]
 })
