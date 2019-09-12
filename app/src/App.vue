@@ -8,7 +8,6 @@
 <script>
 import Menu from "./components/Menu/index"
 
-
 export default {
   name: 'app',
   components: {

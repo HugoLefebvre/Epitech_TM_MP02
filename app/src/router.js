@@ -6,6 +6,7 @@ import ChartManager from "./components/ChartManager/index";
 import User from './components/User/index'
 import HelloWorld from './components/HelloWorld'
 import WorkingTime from './components/WorkingTime/index';
+import WorkingTimeCreate from './components/WorkingTimeCreate/index';
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
             path: '/working-time/:userID',
             name: 'working-time',
             component: WorkingTime
+        }, 
+        {
+            path: '/working-time/:userID/create',
+            name: 'working-time-user-create',
+            component: WorkingTimeCreate
         }
     ]
 })
