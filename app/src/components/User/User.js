@@ -6,7 +6,11 @@ export default {
   props: [],
   data () {
     return {
-      userID:'',
+      username:'',
+      email: '', 
+      insert_at:'', 
+      update_at:'', 
+      element:'',
     }
   },
   computed: {
@@ -16,16 +20,22 @@ export default {
 
   },
   methods: {
-    // createUser: function(userID){
-
-    // },
+    createUser: function(data){
+      axios.get(`http://localhost:4000/api/users/create?user=`+ data)
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+    },
     
     // updateUser: function(userID){
 
     // }, 
 
-    getUser: function(){
-      axios.get(`http://localhost:4000/api/users/show?id=1`)
+    getUser: function(username){
+      axios.get(`http://localhost:4000/api/users/show?id=`+ username)
     .then(response => {
       console.log(response.data);
     })
@@ -34,8 +44,15 @@ export default {
     })
     }, 
     
-    // deleteUser: function(userID){
-      
-    // }
+    deleteUser: function(element){
+      axios.delete("http://localhost:4000/api/users/"+element)
+                .then(function(response) {
+                  // Refresh the page
+                  document.location.reload(true);
+                })
+                .catch(function (error) {
+                  console.log(JSON.stringify(error, null, 2));
+                });    
+    }
   }
 }
