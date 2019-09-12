@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import WorkingTimes from './components/WorkingTimes/index'
 import ClockManager from "./components/ClockManager/index";
 import ChartManager from "./components/ChartManager/index";
+import User from './components/User/index'
 import HelloWorld from './components/HelloWorld'
 import WorkingTime from './components/WorkingTime/index';
 
@@ -24,6 +25,11 @@ export default new Router({
             path: '/chart-manager',
             name: 'chart-manager',
             component: ChartManager
+        },
+        {
+            path: '/user',
+            name: 'home',
+            component: User
         },
         {
             path: '*',
