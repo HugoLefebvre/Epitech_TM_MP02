@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import WorkingTimes from './components/WorkingTimes/index'
 import ClockManager from "./components/ClockManager/index";
 import ChartManager from "./components/ChartManager/index";
+import User from './components/User/index'
 import HelloWorld from './components/HelloWorld'
 
 Vue.use(Router)
@@ -28,6 +29,11 @@ export default new Router({
             path: '*',
             name: 'home',
             component: HelloWorld
+        },
+        {
+            path: '/components/User/index',
+            name: 'User',
+            component: User
         },
     ]
 })
