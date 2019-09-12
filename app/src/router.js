@@ -32,7 +32,7 @@ export default new Router({
             component: User
         },
         {
-            path: '*',
+            path: '/',
             name: 'home',
             component: HelloWorld
         },

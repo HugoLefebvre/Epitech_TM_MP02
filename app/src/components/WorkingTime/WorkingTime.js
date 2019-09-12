@@ -12,8 +12,8 @@ export default {
   },
   mounted () {
     const axios = require('axios');
-
     var self = this;
+
     axios.get("http://localhost:4000/api/workingtimes/"+this.$route.params.userID, {
                 params : {
                   start : '',
