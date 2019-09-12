@@ -1,9 +1,12 @@
+import axios from 'axios'
+
 export default {
   name: 'working-time',
   components: {},
   props: [],
   data () {
     return {
+      userID : this.$route.params.userID,
       dataBack : '',
     }
   },
@@ -11,7 +14,6 @@ export default {
 
   },
   mounted () {
-    const axios = require('axios');
     var self = this;
 
     axios.get("http://localhost:4000/api/workingtimes/"+this.$route.params.userID, {
@@ -30,7 +32,7 @@ export default {
   },
   methods: {
     createWorkingTime: function() {
-
+      this.$router.push("/working-time/" + this.userID + "/create");
     },
 
     updateWorkingTime() {
@@ -38,8 +40,6 @@ export default {
     },
 
     deleteWorkingTime: function(element) {
-      const axios = require('axios');
-
       axios.delete("http://localhost:4000/api/workingtimes/"+element)
                 .then(function(response) {
                   // Refresh the page
