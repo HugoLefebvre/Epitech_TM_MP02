@@ -20,8 +20,15 @@ export default {
 
   },
   methods: {
+    // At the submission of the form
+    submit: function() {
+      // Synchronize methods : do first then do the second
+      this.createWorkingTime().then(this.redirection);
+    },
+
     createWorkingTime: function() {
-      axios({
+      // Must return to authorize then clause
+      return axios({ 
         method: 'post',
         url: 'http://localhost:4000/api/workingtimes/' + this.userID,
         data: {
@@ -31,11 +38,17 @@ export default {
           }
         }
       }).then(function(response) {
-        this.$router.push("/working-time/" + this.userID);
+        console.log(response);
       }).catch(function(error){
-        console.log(JSON.stringify(error, null, 2));
+        console.log(error);
       });
-      this.$router.push("/working-time/" + this.userID);
+    },
+
+    // Return to the list of working-time of the user
+    redirection(){
+      this.$router.push({
+        path: `/working-time/${this.userID}`
+      });
     }
   }
 }

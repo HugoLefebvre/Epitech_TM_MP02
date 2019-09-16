@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'working-time',
@@ -35,8 +35,8 @@ export default {
       this.$router.push("/working-time/" + this.userID + "/create");
     },
 
-    updateWorkingTime() {
-
+    updateWorkingTime: function(start, end) {
+      this.$router.push("/working-time/" + this.userID + "/edit/" + start + "&" + end);
     },
 
     deleteWorkingTime: function(element) {
