@@ -32,11 +32,11 @@ export default {
   },
   methods: {
     createWorkingTime: function() {
-      this.$router.push("/working-time/" + this.userID + "/create");
+      this.$router.push("/working-times/" + this.userID + "/create");
     },
 
     updateWorkingTime: function(start, end) {
-      this.$router.push("/working-time/" + this.userID + "/edit/" + start + "&" + end);
+      this.$router.push("/working-times/" + this.userID + "/edit/" + start + "&" + end);
     },
 
     deleteWorkingTime: function(element) {

@@ -3,11 +3,9 @@
   <div class="flex-container">
     <form class="flex-container" v-on:submit.prevent="submit()">
       <label>Start time</label>
-      <input type="date" v-model="startDate" required/>
-      <input type="time" v-model="startTime" required/>
+      <datetime class="flex-container" type="datetime" v-model="start"></datetime>
       <label>End time</label>
-      <input type="date" v-model="endDate" required/>
-      <input type="time" v-model="endTime" required/>     
+      <datetime class="flex-container" type="datetime" v-model="end"></datetime>   
       <button type="submit">Create</button>
     </form>
   </div>

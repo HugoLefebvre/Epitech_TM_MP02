@@ -1,12 +1,17 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import WorkingTimes from './components/WorkingTimes/index'
+import Vue from 'vue';
+import Router from 'vue-router';
+
 import ClockManager from "./components/ClockManager/index";
+
 import ChartManager from "./components/ChartManager/index";
-import HelloWorld from './components/HelloWorld'
-import WorkingTime from './components/WorkingTime/index';
-import WorkingTimeCreate from './components/WorkingTimeCreate/index';
-import WorkingTimeEdit from './components/WorkingTimeEdit/index';
+
+import HelloWorld from './components/HelloWorld';
+
+import WorkingTimes from './components/WorkingTimesManagement/WorkingTimes/index';
+import WorkingTime from './components/WorkingTimesManagement/WorkingTime/index';
+import WorkingTimeCreate from './components/WorkingTimesManagement/WorkingTimeCreate/index';
+import WorkingTimeEdit from './components/WorkingTimesManagement/WorkingTimeEdit/index';
+
 import Users from './components/UsersManagement/Users/';
 import CreateUser from './components/UsersManagement/CreateUser/';
 import EditUser from './components/UsersManagement/EditUser/';
@@ -15,11 +20,6 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-        {
-            path: '/working-times',
-            name: 'working-times',
-            component: WorkingTimes
-        },
         {
             path: '/clock-manager',
             name: 'clock-manager',
@@ -36,17 +36,22 @@ export default new Router({
             component: HelloWorld
         },
         {
-            path: '/working-time/:userID',
+            path: '/working-times',
+            name: 'working-times',
+            component: WorkingTimes
+        },
+        {
+            path: '/working-times/:userID',
             name: 'working-time',
             component: WorkingTime
         }, 
         {
-            path: '/working-time/:userID/create',
+            path: '/working-times/:userID/create',
             name: 'working-time-user-create',
             component: WorkingTimeCreate
         },
         {
-            path: '/working-time/:userID/edit/:start&:end',
+            path: '/working-times/:userID/edit/:start&:end',
             name: 'working-time-user-edit',
             component: WorkingTimeEdit
         }, 

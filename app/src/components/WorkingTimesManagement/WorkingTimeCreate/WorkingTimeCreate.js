@@ -7,10 +7,8 @@ export default {
   data () {
     return {
       userID : this.$route.params.userID,
-      startDate: '',
-      startTime: '',
-      endDate: '',
-      endTime: ''
+      start: '',
+      end: ''
     }
   },
   computed: {
@@ -33,8 +31,8 @@ export default {
         url: 'http://localhost:4000/api/workingtimes/' + this.userID,
         data: {
           working_time : {
-            start: this.startDate + ' ' + this.startTime + ':00',
-            end: this.endDate + ' ' + this.endTime + ':00'
+            start: this.start,
+            end: this.end
           }
         }
       }).then(function(response) {
@@ -47,7 +45,7 @@ export default {
     // Return to the list of working-time of the user
     redirection(){
       this.$router.push({
-        path: `/working-time/${this.userID}`
+        path: `/working-times/${this.userID}`
       });
     }
   }
