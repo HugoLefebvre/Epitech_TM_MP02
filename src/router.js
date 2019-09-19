@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import ClockManager from "./components/ClockManager/index";
+import ClockManagerDetail from "./components/ClockManagerDetail/index";
+import ClockManagerCreate from "./components/ClockManagerCreate/index"
 
 import ChartManager from "./components/ChartManager/index";
 
@@ -24,6 +26,16 @@ export default new Router({
             path: '/clock-manager',
             name: 'clock-manager',
             component: ClockManager
+        },
+        {
+            path: '/clock-manager/:userID',
+            name: 'clock-manager',
+            component: ClockManagerDetail
+        },
+        {
+            path: '/clock-manager/:userID/create',
+            name: 'clock-manager',
+            component: ClockManagerCreate
         },
         {
             path: '/chart-manager',

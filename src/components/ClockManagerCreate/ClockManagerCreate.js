@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 export default {
-  name: 'working-time-create',
+  name: 'clock-manager-create',
   components: {},
   props: [],
   data () {
     return {
       userID : this.$route.params.userID,
-      start: '',
-      end: ''
+      time: '',
+      status: ''
     }
   },
   computed: {
@@ -26,17 +26,18 @@ export default {
 
     createWorkingTime: function() {
       // Must return to authorize then clause
+      console.log("time " + this.time)
+      console.log("status " + this.status)
       return axios({
         method: 'post',
-        url: 'http://localhost:4000/api/workingtimes/' + this.userID,
+        url: 'http://localhost:4000/api/clocks/' + this.userID,
         data: {
-          working_time : {
-            start: this.start,
-            end: this.end
+          clocking : {
+            time: this.time,
+            status: this.status
           }
         }
       }).then(function(response) {
-        console.log(response);
       }).catch(function(error){
         console.log(error);
       });
@@ -45,7 +46,7 @@ export default {
     // Return to the list of working-time of the user
     redirection(){
       this.$router.push({
-        path: `/working-times/${this.userID}`
+        path: `/clock-manager/${this.userID}`
       });
     }
   }
