@@ -1,20 +1,17 @@
 <template>
   <div id="app">
-    <Menu />
-    <LoginPage />
+    <Index />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Menu from "./components/Menu/index"
-import LoginPage from "./components/Login/LoginPage/index"
+import Index from "./components/Index/index"
 
 export default {
   name: 'app',
   components: {
-    Menu,
-    LoginPage
+    Index
   }
 }
 </script>

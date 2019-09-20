@@ -43,11 +43,6 @@ export default new Router({
             component: ChartManager
         },
         {
-            path: '/',
-            name: 'home',
-            component: HelloWorld
-        },
-        {
             path: '/working-times',
             name: 'working-times',
             component: WorkingTimes

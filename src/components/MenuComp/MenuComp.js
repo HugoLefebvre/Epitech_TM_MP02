@@ -1,5 +1,5 @@
 export default {
-  name: 'menu',
+  name: 'menucomp',
   components: {},
   props: [],
   data () {

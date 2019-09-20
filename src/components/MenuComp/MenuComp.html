@@ -1,0 +1,18 @@
+
+<section class="menucomp">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <div class="div_menu">
+        <router-link to="/"><h1 class="menu_title">Time Manager</h1></router-link>
+    </div>
+
+    <div class="div_sous_menu" v-if="$parent.AccessKey != ''">
+        <ul class="ul_menu">
+            <li><router-link to="/working-times">WORKING TIMES</router-link></li>
+            <li><router-link to="/clock-manager">CLOCK MANAGER</router-link></li>
+            <li><router-link to="/chart-manager">CHART MANAGER</router-link></li>
+            <li><router-link to="/user">USER</router-link></li>
+        </ul>
+    </div>
+
+</section>

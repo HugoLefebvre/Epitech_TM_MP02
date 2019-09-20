@@ -24,8 +24,8 @@ export default {
       },
 
       ConnectUser: function() {
+          var self = this;
         // Must return to authorize then clause
-        var self = this;
         return axios({
           method: 'post',
           url: 'http://localhost:4000/api/users/sign_in',
@@ -35,17 +35,12 @@ export default {
           }
         }).then(function(response) {
             self.error_conn = ""
+            localStorage.AccessKey = response.data.jwt;
+            self.$parent.$parent.AccessKey = response.data.jwt;
         }).catch(function(error){
             self.error_conn = "Connexion failed"
             console.log(error);
         });
-      },
-
-      // Return to the list of working-time of the user
-      redirection(){
-        /*this.$router.push({
-          path: `/user`
-      });*/
       }
   }
 }
