@@ -14,6 +14,9 @@ export default {
 
   },
   methods: {
-
+      disconnectUser: function(){
+          window.localStorage.removeItem('AccessKey');
+          this.$parent.AccessKey = "";
+      }
   }
 }
