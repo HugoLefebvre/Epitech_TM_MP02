@@ -1,5 +1,20 @@
-<section class="clock-manager" v-if="$parent.AccessKey != ''" xmlns:v-on="http://www.w3.org/1999/xhtml">
-    <div class="flex-container" v-if="$parent.Role != '1'">
+<section class="clock-manager" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+    <div class="manage_single_clock">
+        <div v-if="this.ClockState == 1">
+            CLOCK STARTED
+        </div>
+        <div class="button_cont" align="center" v-on:click="useClock">
+            <a v-if="this.ClockState == 0" class="example_e" target="_blank" rel="nofollow noopener">
+                <span class="start_clock">START CLOCK</span>
+            </a>
+            <a v-if="this.ClockState == 1" class="example_e" target="_blank" rel="nofollow noopener">
+                <span class="start_clock">STOP CLOCK</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="flex-container" v-if="this.Role != '3'">
         <div>
             <h1>USER LIST</h1>
             <div class="wts_to_hide_users" v-if="!userDisplay" v-on:click="displayUsers()">
@@ -37,7 +52,4 @@
       </table>
     </div>
 
-    <div class="manage_single_clock">
-        
-    </div>
 </section>
