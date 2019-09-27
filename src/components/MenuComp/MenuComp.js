@@ -15,8 +15,11 @@ export default {
   },
   methods: {
       disconnectUser: function(){
+          console.log(this.$parent.$parent.AccessKey)
+          console.log(this.$parent.$parent.IdUser)
           window.localStorage.removeItem('AccessKey');
-          this.$parent.AccessKey = "";
+          this.$parent.$parent.AccessKey = "";
+          this.$router.push("/");
       }
   }
 }

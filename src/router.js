@@ -11,7 +11,6 @@ import HelloWorld from './components/HelloWorld';
 
 import WorkingTimes from './components/WorkingTimesManagement/WorkingTimes/index';
 import WorkingTime from './components/WorkingTimesManagement/WorkingTime/index';
-import WorkingTimeCreate from './components/WorkingTimesManagement/WorkingTimeCreate/index';
 import WorkingTimeEdit from './components/WorkingTimesManagement/WorkingTimeEdit/index';
 
 import Users from './components/UsersManagement/Users/';
@@ -51,11 +50,6 @@ export default new Router({
             path: '/working-times/:userID',
             name: 'working-time',
             component: WorkingTime
-        },
-        {
-            path: '/working-times/:userID/create',
-            name: 'working-time-user-create',
-            component: WorkingTimeCreate
         },
         {
             path: '/working-times/:userID/edit/:start&:end',

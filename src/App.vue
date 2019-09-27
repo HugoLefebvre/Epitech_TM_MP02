@@ -12,7 +12,24 @@ export default {
   name: 'app',
   components: {
     Index
-  }
+  },
+  data () {
+    return {
+        AccessKey:'',
+        IdUser:'',
+        Role:''
+    }
+  },
+  computed: {
+  },
+  mounted () {
+      if (localStorage.AccessKey) {
+          this.AccessKey = localStorage.AccessKey;
+      }
+  },
+  methods: {
+
+  },
 }
 </script>
 

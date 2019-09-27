@@ -1,26 +1,22 @@
 import MenuComp from "../MenuComp/index"
-import LoginPage from "../Login/LoginPage/index"
+import Connexion from "../Login/Connexion/index"
 
 export default {
   name: 'index',
   components: {
       MenuComp,
-      LoginPage
+      Connexion
   },
   props: [],
   data () {
     return {
-        AccessKey:''
     }
   },
   computed: {
   },
   mounted () {
-      if (localStorage.AccessKey) {
-          this.AccessKey = localStorage.AccessKey;
-      }
   },
   methods: {
-      
+
   },
 }

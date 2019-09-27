@@ -10,9 +10,10 @@ export default {
     }
   },
   computed: {
-
   },
   mounted () {
+      console.log("test")
+      console.log(this.$parent.Role)
     const axios = require('axios');
 
     var self = this;

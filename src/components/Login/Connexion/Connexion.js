@@ -1,4 +1,5 @@
 import axios from 'axios'
+import main from '../../../App'
 
 export default {
   name: 'connexion',
@@ -17,9 +18,8 @@ export default {
 
   },
   methods: {
-      // At the submission of the form
+
       submit: function() {
-        // Synchronize methods : do first then do the second
         this.ConnectUser().then(this.redirection);
       },
 
@@ -34,9 +34,16 @@ export default {
                   password : this.password
           }
         }).then(function(response) {
+            console.log(response)
             self.error_conn = ""
             localStorage.AccessKey = response.data.jwt;
             self.$parent.$parent.AccessKey = response.data.jwt;
+            self.$parent.$parent.IdUser = response.data.idCurrentUser;
+            self.$parent.$parent.Role = response.data.roleCurrentUser;
+
+            console.log(self.$parent.$parent.AccessKey)
+            console.log(self.$parent.$parent.IdUser)
+
         }).catch(function(error){
             self.error_conn = "Connexion failed"
             console.log(error);

@@ -1,7 +1,7 @@
 
 <section class="working-times">
 
-  <div class="flex-container">
+  <div class="flex-container" v-if="$parent.Role!=1">
       <h1>USER LIST</h1>
       <div class="wts_to_hide_users" v-if="!userDisplay" v-on:click="displayUsers()">
           Click here to display Users
@@ -36,4 +36,5 @@
       </tr>
     </table>
   </div>
+  <WorkingTime class="userInterface" v-if="$parent.Role == 1" />
 </section>

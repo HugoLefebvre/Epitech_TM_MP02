@@ -1,6 +1,10 @@
+import WorkingTime from "../WorkingTime/index"
+
 export default {
   name: 'working-times',
-  components: {},
+  components: {
+      WorkingTime
+  },
   props: [],
   data () {
     return {

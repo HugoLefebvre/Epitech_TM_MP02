@@ -1,22 +1,23 @@
-
-<section class="clock-manager">
-    <div class="flex-container">
-        <h1>USER LIST</h1>
-        <div class="wts_to_hide_users" v-if="!userDisplay" v-on:click="displayUsers()">
-            Click here to display Users
+<section class="clock-manager" v-if="$parent.AccessKey != ''" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="flex-container" v-if="$parent.Role != '1'">
+        <div>
+            <h1>USER LIST</h1>
+            <div class="wts_to_hide_users" v-if="!userDisplay" v-on:click="displayUsers()">
+                Click here to display Users
+            </div>
+            <table v-if="userDisplay">
+                <tr>
+                    <th>Id User</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                <tr v-for="(data, index) in dataUser" v-on:click="redirectWorkingTime(data.id)">
+                    <td>{{data.id}}</td>
+                    <td>{{data.username }}</td>
+                    <td>{{data.email}}</td>
+                </tr>
+            </table>
         </div>
-        <table v-if="userDisplay">
-          <tr>
-            <th>Id User</th>
-            <th>Username</th>
-            <th>Email</th>
-          </tr>
-          <tr v-for="(data, index) in dataUser" v-on:click="redirectWorkingTime(data.id)">
-            <td>{{data.id}}</td>
-            <td>{{data.username }}</td>
-            <td>{{data.email}}</td>
-          </tr>
-        </table>
         <br>
         <h1>CLOCKS LIST</h1>
         <p>Click on items to reach their user's pages</p>
@@ -34,5 +35,9 @@
           <td>{{data.status}}</td>
         </tr>
       </table>
+    </div>
+
+    <div class="manage_single_clock">
+        
     </div>
 </section>

@@ -27,8 +27,6 @@ export default {
 
       RegisterUser: function() {
         // Must return to authorize then clause
-        console.log("time " + this.time)
-        console.log("status " + this.status)
         return axios({
           method: 'post',
           url: 'http://localhost:4000/api/users',
@@ -37,7 +35,7 @@ export default {
                   username : this.pseudo,
                   email : this.email,
                   password : this.password,
-                  role : 1
+                  role_id : 1
               }
           }
         }).then(function(response) {

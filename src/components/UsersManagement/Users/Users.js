@@ -1,4 +1,5 @@
 import axios from 'axios'
+import CreateUser from "../CreateUser/index";
 
 export default {
   name: 'users',
@@ -17,7 +18,10 @@ export default {
 
     axios({
       method: 'get',
-      url: 'http://localhost:4000/api/users'
+      url: 'http://localhost:4000/api/users',
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.AccessKey
+      }
     })
     .then(function (response) {
       console.log(JSON.stringify(response, null, 2));
@@ -28,6 +32,39 @@ export default {
     });
   },
   methods: {
+
+    displayCreate: function(){
+      this.$modal.show('dialog', {
+        title: 'Add a new user',
+        text: '',
+        buttons: [
+          {
+            title: 'Register',
+            handler: () => { alert('Woot!') }
+          },
+          {
+            title: 'Close'
+          }
+        ]
+      })
+    },
+
+    popupDelete: function(id){
+      this.$modal.show('dialog', {
+        title: 'Confirmation',
+        text: 'Are you sure you want to delete this user ?',
+        buttons: [
+          {
+            title: 'Delete',
+            handler: () => { this.deleteUser(id) }
+          },
+          {
+            title: 'Close'
+          }
+        ]
+      })
+    },
+
     createUser: function() {
       this.$router.push({
         name: 'create-user'
@@ -43,7 +80,10 @@ export default {
     deleteUser: function(id) {
       axios({
         method: 'delete',
-        url: 'http://localhost:4000/api/users/' + id
+        url: 'http://localhost:4000/api/users/' + id,
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.AccessKey
+        }
       })
       .then(function(response) {
         // Refresh the page

@@ -1,9 +1,12 @@
-
-<section class="users">
+<section class="users" xmlns:v-on="http://www.w3.org/1999/xhtml">
   
   <div class="flex-container">
-    <button @click.stop.prevent="createUser()">Create a new user</button>
+    <button @click.stop.prevent="displayCreate()">Create a new user</button>
   </div>
+
+  <v-dialog>
+    test
+  </v-dialog>
 
   <div class="flex-container">
     <table>
@@ -19,7 +22,7 @@
         <td>{{data.username}}</td>
         <td>{{data.email}}</td>
         <td><span class="click-link" v-on:click="editUser(data.id)">Edit</span></td>
-        <td><span class="click-link" v-on:click="deleteUser(data.id)">Delete</span></td>
+        <td><span class="click-link" v-on:click="popupDelete(data.id)">Delete</span></td>
       </tr>
     </table>
 

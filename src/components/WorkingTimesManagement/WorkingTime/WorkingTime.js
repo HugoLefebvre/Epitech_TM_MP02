@@ -15,20 +15,36 @@ export default {
   },
   mounted () {
     var self = this;
-
-    axios.get("http://localhost:4000/api/workingtimes/"+this.$route.params.userID, {
-                params : {
-                  start : '',
-                  end : ''
-                }
-              })
-              .then(function(response) {
-                console.log(JSON.stringify(response, null, 2));
+    console.log("test")
+    console.log(this.$parent.$parent.Role)
+    if(this.$parent.$parent.Role != '' && this.$parent.$parent.Role != 1){
+        axios.get("http://localhost:4000/api/workingtimes/"+this.$route.params.userID, {
+            params : {
+                start : '',
+                end : ''
+            }
+        })
+            .then(function(response) {
                 self.dataBack = response.data.data;
-              })
-              .catch(function (error) {
+            })
+            .catch(function (error) {
                 console.log(JSON.stringify(error, null, 2));
-              });
+            });
+    } else if (this.$parent.$parent.Role != '' && this.$parent.$parent.Role == 1){
+        axios.get("http://localhost:4000/api/workingtimes/"+this.$parent.$parent.IdUser, {
+            params : {
+                start : '',
+                end : ''
+            }
+        })
+            .then(function(response) {
+                self.dataBack = response.data.data;
+            })
+            .catch(function (error) {
+                console.log(JSON.stringify(error, null, 2));
+            });
+    }
+
   },
   methods: {
     createWorkingTime: function() {
