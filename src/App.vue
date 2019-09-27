@@ -15,17 +15,15 @@ export default {
   },
   data () {
     return {
-        AccessKey:'',
         IdUser:'',
-        Role:''
+        Role:'',
+        Username:'',
+        Email:''
     }
   },
   computed: {
   },
   mounted () {
-      if (localStorage.AccessKey) {
-          this.AccessKey = localStorage.AccessKey;
-      }
   },
   methods: {
 

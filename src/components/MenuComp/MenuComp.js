@@ -4,21 +4,25 @@ export default {
   props: [],
   data () {
     return {
-
+        Username:''
     }
   },
   computed: {
 
   },
   mounted () {
-
+    if(localStorage.Username){
+        this.Username = localStorage.Username;
+    }
   },
   methods: {
       disconnectUser: function(){
-          console.log(this.$parent.$parent.AccessKey)
-          console.log(this.$parent.$parent.IdUser)
           window.localStorage.removeItem('AccessKey');
-          this.$parent.$parent.AccessKey = "";
+          window.localStorage.removeItem('IdUser');
+          window.localStorage.removeItem('Role');
+          window.localStorage.removeItem('Username');
+          window.localStorage.removeItem('Email');
+          this.$parent.AccessKey = "";
           this.$router.push("/");
       }
   }

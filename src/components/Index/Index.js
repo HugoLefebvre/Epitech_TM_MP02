@@ -10,11 +10,15 @@ export default {
   props: [],
   data () {
     return {
+      AccessKey:""
     }
   },
   computed: {
   },
   mounted () {
+    if (localStorage.AccessKey) {
+      this.AccessKey = localStorage.AccessKey;
+    }
   },
   methods: {
 
