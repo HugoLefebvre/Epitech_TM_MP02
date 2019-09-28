@@ -2,14 +2,16 @@
 
     <div class="manage_single_clock">
         <div v-if="this.ClockState == 1">
-            CLOCK STARTED
+            <b>CLOCK STARTED</b>
+            <br>
+            {{ ClockTime }}
         </div>
         <div class="button_cont" align="center" v-on:click="useClock">
-            <a v-if="this.ClockState == 0" class="example_e" target="_blank" rel="nofollow noopener">
-                <span class="start_clock">START CLOCK</span>
+            <a v-if="this.ClockState == 0" class="example_e start_clock" target="_blank" rel="nofollow noopener">
+                <span>START CLOCK</span>
             </a>
-            <a v-if="this.ClockState == 1" class="example_e" target="_blank" rel="nofollow noopener">
-                <span class="start_clock">STOP CLOCK</span>
+            <a v-if="this.ClockState == 1" class="example_e stop_clock" target="_blank" rel="nofollow noopener">
+                <span>STOP CLOCK</span>
             </a>
         </div>
     </div>

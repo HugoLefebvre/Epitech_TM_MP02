@@ -24,7 +24,10 @@ export default {
     //Get sur les Users
     axios({
       method: 'get',
-      url: 'http://localhost:4000/api/users'
+      url: 'http://localhost:4000/api/users',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.AccessKey
+        }
     })
     .then(function (response) {
       self.dataUser = response.data.data;
@@ -38,7 +41,10 @@ export default {
       params : {
         start : '',
         end : ''
-      }
+      },
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.AccessKey
+        }
     }).then(function(response) {
         response.data.data.forEach(function(element, index){
             response.data.data[index].username = "";
@@ -46,6 +52,9 @@ export default {
                 params : {
                     start : '',
                     end : ''
+                },
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.AccessKey
                 }
             })
             .then(function(rep) {

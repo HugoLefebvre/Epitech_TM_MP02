@@ -1,4 +1,6 @@
 const axios = require('axios');
+var dateFormat = require('dateformat')
+var timediff = require('timediff');
 
 export default {
   name: 'clock-manager',
@@ -11,6 +13,7 @@ export default {
         dataUser:"",
         userDisplay:false,
         ClockState:'',
+        ClockInitTime:'',
         ClockTime:''
     }
   },
@@ -107,6 +110,12 @@ export default {
                         }
                     }).then(function(response) {
                         self.ClockState = 1;
+                        self.getClockTime();
+                        var interval = setInterval(function(){
+                            self.refreshClockDifference()
+                            if(self.ClockState != 1) clearInterval(interval)
+                        }, 1000);
+
                     }).catch(function(error){
                         console.log(error);
                     });
@@ -128,6 +137,26 @@ export default {
                         }
                     }).then(function(response) {
                         self.ClockState = 0;
+                        self.ClockTime = "";
+
+                        axios({
+                            method: 'post',
+                            url: 'http://localhost:4000/api/workingtimes/' + localStorage.IdUser,
+                            data: {
+                                working_time : {
+                                    start: self.ClockInitTime,
+                                    end: new Date()
+                                }
+                            },
+                            headers: {
+                                'Authorization': 'Bearer ' + localStorage.AccessKey
+                            }
+                        }).then(function(response) {
+
+                        }).catch(function(error){
+                            console.log(JSON.stringify(error, null, 2));
+                        });
+
                     }).catch(function(error){
                         console.log(error);
                     });
@@ -151,15 +180,23 @@ export default {
                   var status = response.data.data[0].status;
                   if(status == true){
                       self.ClockState = 1;
-                      self.ClockTime = response.data.data[0].time;
+                      self.ClockInitTime = response.data.data[0].time;
+                      var interval = setInterval(function(){
+                          self.refreshClockDifference()
+                          if(self.ClockState != 1) clearInterval(interval)
+                      }, 1000);
                   } else{
                       self.ClockState = 0;
                   }
-                  console.log(self.ClockState)
               })
               .catch(function (error) {
                   console.log(JSON.stringify(error, null, 2));
               });
+      },
+
+      refreshClockDifference: function(){
+        var difference = timediff(this.ClockInitTime, new Date(), 'H m S');
+        this.ClockTime = difference.hours + "h " + difference.minutes + "m " + difference.seconds + "s"
       }
   }
 }
