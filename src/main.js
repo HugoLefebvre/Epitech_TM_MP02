@@ -6,7 +6,7 @@ import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 import VModal from 'vue-js-modal'
 
-Vue.use(VModal, { dialog: true })
+Vue.use(VModal, { dialog: true, dynamic: true, dynamicDefaults: { clickToClose: false } })
 
 
 Vue.prototype.moment = moment

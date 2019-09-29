@@ -8,18 +8,26 @@ export default {
     return {
       userID : this.$route.params.userID,
       username: '',
-      email:  ''
+      email:  '',
+      password: '',
+      userRole:''
     }
   },
   computed: {
 
   },
   mounted () {
+
+    if(localStorage.Role) this.role = localStorage.Role
+
     var self = this;
 
     axios({
       method: 'get',
-      url: 'http://localhost:4000/api/users/' + this.userID
+      url: 'http://localhost:4000/api/users/' + this.userID,
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.AccessKey
+      }
     })
     .then(function(response) {
       console.log(JSON.stringify(response, null, 2));
@@ -43,8 +51,12 @@ export default {
         data: {
           user: {
             username: this.username,
-            email: this.email
+            email: this.email,
+            password: this.password
           }
+        },
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.AccessKey
         }
       }).then(function(response) {
         console.log(response);
