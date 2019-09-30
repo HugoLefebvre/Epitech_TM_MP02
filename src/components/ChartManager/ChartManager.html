@@ -11,8 +11,8 @@
   </div>
   <div>
       <h3>Working time per week</h3>
-      <input v-model="startTimeB" type="date" name="field3" class="field-long" placeholder="Start date" />
-      <input v-model="endTimeB" type="date" name="field3" class="field-long" placeholder="End date" />
+      <input v-model="startTimeBar" type="date" name="field3" class="field-long" placeholder="Start date" />
+      <input v-model="endTimeBar" type="date" name="field3" class="field-long" placeholder="End date" />
       <bar-chart id="bar" :data="barData" :colors="barColors" :xkey="xkeyBar" :ykeys="ykeysBar" :labels="labelsBar"  :xlabelformat="xLabelFormatBar"
       :xLabels='xLabelsBar' :xLabelAngle="xlabelangleBar" :hideOver="true" :resize="true" ></bar-chart>
   </div>
