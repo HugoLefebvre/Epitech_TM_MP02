@@ -1,5 +1,9 @@
 
 <section class="chart-manager">
-  <h1>chart-manager Component</h1>
-</section>
+  <h1>Dashboard: Review your statistics</h1>
+  <!-- <donut-chart id="donut" :data="donutData" :colors="arrayColors" resize="true"></donut-chart> -->
+  <div><line-chart id="line" :data="lineData" :colors="lineColors" :xkey="xkey" :ykeys="ykeys" :labels="labels" :xLabelAngle='xlabelangle' resize="true"></line-chart></div>
+  <!-- <input v-model="startTime" type="date" name="field3" class="field-long" placeholder="Start date" />
+  <input v-model="endTime" type="date" name="field3" class="field-long" placeholder="End date" /> -->
+</section>  
 
