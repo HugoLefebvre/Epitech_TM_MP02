@@ -12,6 +12,7 @@ import WorkingTimeEdit from './components/WorkingTimesManagement/WorkingTimeEdit
 
 import Users from './components/UsersManagement/Users/';
 import EditUser from './components/UsersManagement/EditUser/';
+import UserMenu from "./components/UsersManagement/UserMenu/index";
 
 Vue.use(Router)
 
@@ -44,8 +45,8 @@ export default new Router({
         },
         {
             path: '/user',
-            name: 'users',
-            component: Users
+            name: 'UserMenu',
+            component: UserMenu
         },
         {
             path: '/user/edit-user/:userID',
