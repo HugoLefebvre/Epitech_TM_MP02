@@ -1,9 +1,22 @@
 
 <section class="chart-manager">
-  <h1>Dashboard: Review your statistics</h1>
+  <h1>Dashboard</h1>
   <!-- <donut-chart id="donut" :data="donutData" :colors="arrayColors" resize="true"></donut-chart> -->
-  <div><line-chart id="line" :data="lineData" :colors="lineColors" :xkey="xkey" :ykeys="ykeys" :labels="labels" :xLabelAngle='xlabelangle' resize="true"></line-chart></div>
-  <!-- <input v-model="startTime" type="date" name="field3" class="field-long" placeholder="Start date" />
-  <input v-model="endTime" type="date" name="field3" class="field-long" placeholder="End date" /> -->
+  <div>
+      <h3>Working time per day</h3>
+      <input v-model="startTime" type="date" name="field3" class="field-long" placeholder="Start date" />
+      <input v-model="endTime" type="date" name="field3" class="field-long" placeholder="End date" />
+      <line-chart id="line" :data="lineData" :colors="lineColors" :xkey="xkey" :ykeys="ykeys" :labels="labels"  :xlabelformat="xLabelFormat"
+      :xLabels='xLabels' :xLabelAngle="xlabelangle" :hideOver="true" :resize="true" ></line-chart>
+  </div>
+  <div>
+      <h3>Working time per week</h3>
+      <input v-model="startTimeB" type="date" name="field3" class="field-long" placeholder="Start date" />
+      <input v-model="endTimeB" type="date" name="field3" class="field-long" placeholder="End date" />
+      <bar-chart id="bar" :data="barData" :colors="barColors" :xkey="xkeyBar" :ykeys="ykeysBar" :labels="labelsBar"  :xlabelformat="xLabelFormatBar"
+      :xLabels='xLabelsBar' :xLabelAngle="xlabelangleBar" :hideOver="true" :resize="true" ></bar-chart>
+  </div>
+  
+
 </section>  
 

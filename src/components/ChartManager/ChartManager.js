@@ -12,29 +12,35 @@ export default {
   data () {
     return {
       user_ID:'',
-      startTime: new Date, 
-      endTime: new Date, 
 
+      //Line Chart Data 
+      startTime: '', 
+      endTime: '', 
       lineData : [], 
-      xkey : '', 
+      xkey : 'lineDay', 
       ykeys :[], 
       labels :[], 
       lineColors :[],
-      xlabelangle: '45',
+      xlabelangle: '90',
+      xLabels: 'day',
+      xLabelFormat:function(x) {        
+        return x.toDateString();
+      },
+
+      //Bar Chart Data
+      startTimeBar: '', 
+      endTimeBar: '', 
+      barData : [], 
+      xkeyBar : 'lineDay', 
+      ykeysBar :[], 
+      labelsBar :[], 
+      barColors :[],
+      xlabelangleBar: '90',
+      xLabelsBar: 'day',
+      xLabelFormatBar:function(x) {        
+        return x.toDateString();
+      },
       
-    //       klolo: [
-    //   { y: '2006', a: 100, b: 90 },
-    //   { y: '2007', a: 75,  b: 65 },
-    //   { y: '2008', a: 50,  b: 40 },
-    //   { y: '2009', a: 75,  b: 65 },
-    //   { y: '2010', a: 50,  b: 40 },
-    //   { y: '2011', a: 75,  b: 65 },
-    //   { y: '2012', a: 100, b: 90 }
-    // ],
-    // xkey: 'y',
-    // ykeys: ['a', 'b'],
-    // labels: ['Series A', 'Series B'],
-    // lineColors:[ "#FF6384", "#73c000"]
     }
   },
   computed: {
@@ -42,8 +48,34 @@ export default {
   },
   mounted () { 
     var self = this; 
+    //Init user ID
     self.user_ID = localStorage.IdUser;
 
+    self.setLineChart(); 
+    
+  },
+  methods: {
+
+    pad: function(number){
+      var str = number;
+      if (number<10){
+        str = '0'+number;
+      }
+      return str;
+    },
+
+    getWeekNumber: function(d) {
+      d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+      var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+      return weekNo;
+    },
+
+    setLineChart: function(){
+    var self = this;
+    self.endTime = new Date; 
+    self.startTime = new Date; 
     self.startTime.setDate(self.startTime.getDate() - 7);
     
     var Stime = self.startTime.getFullYear() + '-' + self.pad(self.startTime.getMonth()+1) + '-' + 
@@ -61,53 +93,43 @@ export default {
       }
     })
     .then(function (response) {
-
+      
       var data = response.data.data; 
-      var avg;
+      var tot;
       var obj;
+
+      //Setting line chart data 
       var i = 0;
       for (i = 0; i < data.length; i++) {
         if (i>0){
           if (data[i].start.substring(0,10) == data[i-1].start.substring(0,10)){
-            avg += Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
+            tot += Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
             self.lineData.pop(); 
-            obj = {date: data[i].start.substring(0,10).toString(), a: avg};
+            obj = {lineDay: data[i].start.substring(0,10).toString(), a: tot};
             self.lineData.push(obj); 
           }
           else{
-            avg = Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
-            obj = {date: data[i].start.substring(0,10).toString(), a: avg};
+            tot = Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
+            obj = {lineDay: data[i].start.substring(0,10).toString(), a: tot};
             self.lineData.push(obj); 
           }
         }
         else{
-          avg = Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
-            obj = {date: data[i].start.substring(0,10).toString(), a: avg};
+          tot = Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
+            obj = {lineDay: data[i].start.substring(0,10).toString(), a: tot};
             self.lineData.push(obj); 
         }
       }
-      self.xkey ='date'; 
       self.ykeys.push('a');
-      self.labels.push('Series A');
+      self.labels.push('Working Time');
       self.lineColors.push('#FF6384');
-      console.log(self.lineData);
-     })
-    .catch(function (error) {
-      console.log(error);
-    });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
 
 
-
-  },
-  methods: {
-
-    pad:function(number){
-      var str = number;
-      if (number<10){
-        str = '0'+number;
-      }
-      return str;
-    },
 
   }
 }
