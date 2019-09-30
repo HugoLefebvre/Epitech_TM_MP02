@@ -18,7 +18,7 @@ export default {
   },
   mounted () {
 
-    if(localStorage.Role) this.role = localStorage.Role
+    if(localStorage.Role) this.userRole = localStorage.Role
 
     var self = this;
 
