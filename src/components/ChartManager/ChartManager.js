@@ -1,12 +1,14 @@
 // import { DonutChart } from 'vue-morris'
 import { LineChart } from 'vue-morris'
+import { BarChart } from 'vue-morris'
 import axios from 'axios'
 
 export default {
   name: 'chart-manager',
   components: {
     // DonutChart, 
-    LineChart
+    LineChart, 
+    BarChart,
   },
   props: [],
   data () {
@@ -105,17 +107,19 @@ export default {
         for (i = 0; i < data.length; i++) {
           if(i>0 && self.getWeekNumber(new Date(data[i].start)) == self.getWeekNumber(new Date(data[i-1].start))){
             tot += Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
-            self.lineData.pop(); 
+            self.barData.pop(); 
           } 
           else{
             tot = Math.abs(new Date(data[i].end) - new Date(data[i].start))/(1000 * 60 * 60);
           }
           obj = { barWeek: 'Week ' + self.getWeekNumber(new Date(data[i].start)), a: tot};
-          self.lineData.push(obj); 
+          self.barData.push(obj); 
         }
-        self.ykeys.push('a');
-        self.labels.push('Working Time');
-        self.lineColors.push('#FF6384');
+        self.ykeysBar.push('a');
+        self.labelsBar.push('Working Time');
+        self.barColors.push('#FF6384');
+        console.log('BARCHART C ICI'); 
+        console.log(self.barData);
       })
       .catch(function (error) {
         console.log(error);
